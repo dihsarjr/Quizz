@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/quiz.dart';
-import './result.dart';
+
 import './quiz.dart';
+import './result.dart';
 
 void main() {
   runApp(MyApp());
@@ -63,18 +64,16 @@ class _MyAppState extends State<MyApp> {
   var _questionIntex = 0;
   var _totalScore = 0;
 
-  void _restratQuiz (){
+  void _restratQuiz() {
     setState(() {
       _questionIntex = 0;
       _totalScore = 0;
     });
   }
-  
 
   void _myAns(int score) {
     _totalScore += score;
     setState(() {
-      
       _questionIntex = _questionIntex + 1;
     });
     if (_questionIntex < _question.length) {
@@ -90,7 +89,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            "hi how ",
+            "Quizz",
           ),
           centerTitle: true,
         ),
@@ -100,7 +99,10 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: _questionIntex,
                 myAns: _myAns,
               )
-            : Result(totalScore: _totalScore, quizHandler: _restratQuiz,),
+            : Result(
+                totalScore: _totalScore,
+                quizHandler: _restratQuiz,
+              ),
       ),
     );
   }
